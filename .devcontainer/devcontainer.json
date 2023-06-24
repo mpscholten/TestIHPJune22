@@ -31,6 +31,8 @@
   "containerEnv": {
     "PROJECT_DIR": "${containerWorkspaceFolder}"
   },
+  
+  "postStartCommand": "nix develop --impure --accept-flake-config --command devenv up",
 
   "remoteUser": "vscode",
 
