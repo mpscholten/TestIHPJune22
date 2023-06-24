@@ -19,11 +19,13 @@
     "Set IHP BASEURL": "echo 'export IHP_BASEURL=$(if [ -n \"${CODESPACE_NAME}\" ]; then echo \"https://${CODESPACE_NAME}-8000.preview.app.github.dev\"; else echo \"http://localhost:8000\"; fi)' >> ~/.bashrc",
     "Set IHP IDE BASEURL": "echo 'export IHP_IDE_BASEURL=$(if [ -n \"${CODESPACE_NAME}\" ]; then echo \"https://${CODESPACE_NAME}-8001.preview.app.github.dev\"; else echo \"http://localhost:8001\"; fi)' >> ~/.bashrc",
     "Fix nix Permissions": "sudo apt install acl; sudo setfacl -k /tmp",
+    "Allow direnv": "mkdir -p ~/direnv; touch ~/direnv/direnv.toml; echo \"[whitelist]\nprefix = /workspaces/\" >> ~/direnv/direnv.toml"
+
   },
 
   "postCreateCommand": {
     // Credits to https://github.com/gitpod-samples/template-ihp/blob/e3fe7012621ab57657c59511b2fe0bc615d5186d/.gitpod.yml#L14
-    "Setup IHP": "sudo /usr/local/share/nix-entrypoint.sh; ( if [ ! -e \"Main.hs\" ]; then rm -rf /tmp/ihp-boilerplate; git clone \"https:\/\/github.com/digitallyinduced/ihp-boilerplate.git\" /tmp/ihp-boilerplate; rm -rf /tmp/ihp-boilerplate/.git; cp -r /tmp/ihp-boilerplate/. .; fi) && git add . && nix develop --accept-flake-config --impure --command make -s all; nix develop --accept-flake-config --impure --command new-application Web && direnv allow"
+    "Setup IHP": "sudo /usr/local/share/nix-entrypoint.sh; ( if [ ! -e \"Main.hs\" ]; then rm -rf /tmp/ihp-boilerplate; git clone \"https:\/\/github.com/digitallyinduced/ihp-boilerplate.git\" /tmp/ihp-boilerplate; rm -rf /tmp/ihp-boilerplate/.git; cp -r /tmp/ihp-boilerplate/. .; fi) && git add . && nix develop --accept-flake-config --impure --command make -s all; nix develop --accept-flake-config --impure --command new-application Web"
   },
 
   "containerEnv": {
