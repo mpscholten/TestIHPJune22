@@ -23,7 +23,7 @@
 
   "postCreateCommand": {
     // Credits to https://github.com/gitpod-samples/template-ihp/blob/e3fe7012621ab57657c59511b2fe0bc615d5186d/.gitpod.yml#L14
-    "Setup IHP": "sudo /usr/local/share/nix-entrypoint.sh; ( if [ ! -e \"Main.hs\" ]; then rm -rf /tmp/ihp-boilerplate; git clone \"https:\/\/github.com/digitallyinduced/ihp-boilerplate.git\" /tmp/ihp-boilerplate; rm -rf /tmp/ihp-boilerplate/.git; cp -r /tmp/ihp-boilerplate/. .; fi) && git add . && nix develop --accept-flake-config --impure --command make -s all; new-application Web && direnv allow"
+    "Setup IHP": "sudo /usr/local/share/nix-entrypoint.sh; ( if [ ! -e \"Main.hs\" ]; then rm -rf /tmp/ihp-boilerplate; git clone \"https:\/\/github.com/digitallyinduced/ihp-boilerplate.git\" /tmp/ihp-boilerplate; rm -rf /tmp/ihp-boilerplate/.git; cp -r /tmp/ihp-boilerplate/. .; fi) && git add . && nix develop --accept-flake-config --impure --command make -s all; nix develop --accept-flake-config --impure --command new-application Web && direnv allow"
   },
 
   "containerEnv": {
